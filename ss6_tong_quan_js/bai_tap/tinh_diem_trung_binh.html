@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Điểm TB</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background-color: lightgray;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 200px;
+            box-shadow: 5px 5px 10px #888888;
+        }
+
+        button {
+            padding: 10px 20px;
+            border:none;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Điểm Trung Bình</h1>
+
+    <label for="toan">Điểm Toán</label>
+    <input type="text" id="toan"><br>
+
+    <label for="ly">Điểm Lý</label>
+    <input type="text" id="ly"><br>
+
+    <label for="hoa">Điểm Hóa</label>
+    <input type="text" id="hoa"><br>
+
+    <button onclick="tinhDiemTrungBinh()">Calculate</button>
+
+    <h2 id="diemTB"></h2>
+
+    <script>
+        function tinhDiemTrungBinh() {
+            let toan=parseFloat(document.getElementById("toan").value);
+            let ly=parseFloat(document.getElementById("ly").value);
+            let hoa=parseFloat(document.getElementById("hoa").value);
+
+            let diemTB = (toan+ly+hoa)/3;
+            document.getElementById("diemTB").innerText = "Điểm trung bình của bạn là:"+ diemTB;
+        }
+    </script>
+
+</body>
+</html>
