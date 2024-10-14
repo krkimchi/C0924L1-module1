@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng máy tính</title>
+</head>
+<body>
+<h1>Calculator</h1>
+<form id="calculator">
+    <label for="num1"></label>
+    <input type="number" id="num1">
+
+    <label for="num2"></label>
+    <input type="number" id="num2"><br>
+
+    <button type="button" onclick="calculate('add')">Addition(+)</button>
+    <button type="button" onclick="calculate('subtract')">Subtraction(-)</button>
+    <button type="button" onclick="calculate('multiply')">Multiplication(*)</button>
+    <button type="button" onclick="calculate('divide')">Division(/)</button>
+</form>
+
+<h2 id="result"></h2>
+
+<script>
+    function calculate(operation) {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        let result;
+        switch (operation) {
+            case 'add' :
+                result = num1 + num2;
+                break;
+            case 'subtract' :
+                result = num1 - num2;
+                break;
+            case 'multiply' :
+                result = num1 * num2;
+                break;
+            case 'divide' :
+                result = num1 / num2;
+                break;
+        }
+        document.getElementById("result").innerText = "Your result: " + result;
+    }
+</script>
+</body>
+</html>
