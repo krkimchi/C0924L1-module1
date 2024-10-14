@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chuyển Đổi Tiền</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      background-color: lightgray;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: black;
+    }
+
+    form {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      margin: auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      border-color: cadetblue;
+      outline: none;
+    }
+
+    button {
+      background-color: limegreen;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<h1>Chuyển Đổi Tiền</h1>
+<form id="currencyConverter" onsubmit="convertCurrency(event)">
+  <label for ="amount">Amount</label>
+  <input type="number" id="amount" required>
+
+  <label for="fromCurrency">From Currency</label>
+  <select id="fromCurrency">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+  </select>
+
+  <label for="toCurrency">To Currency</label>
+  <select id="toCurrency">
+    <option value="USD">USD</option>
+    <option value="VND">VND</option>
+  </select>
+
+  <button type="submit">Exchange</button>
+</form>
+
+<h2 id="result"></h2>
+
+<script>
+  function convertCurrency(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const amount = parseFloat(document.getElementById("amount").value);
+    const fromCurrency = document.getElementById("fromCurrency").value;
+    const toCurrency = document.getElementById("toCurrency").value;
+
+    let exchangeRate;
+    if (fromCurrency === "VND" && toCurrency === "USD") {
+      exchangeRate = 0.000040;
+    } else if (fromCurrency === "USD" && toCurrency === "VND") {
+      exchangeRate = 24850;
+    } else {
+      exchangeRate = 1;
+    }
+
+    const result = amount * exchangeRate;
+    document.getElementById("result").innerText = "Result: " + result.toFixed(2);
+  }
+</script>
+
+</body>
+</html>

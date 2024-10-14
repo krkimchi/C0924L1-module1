@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chu Vi Hình Tròn</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      background-color: lightgray;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: black;
+    }
+
+    label {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid black;
+      border-radius: 5px;
+      width: 200px;
+      box-shadow: 5px 5px 10px #888888;
+    }
+
+    button {
+      padding: 10px 20px;
+      border:none;
+      border-radius: 5px;
+      background-color: white;
+      color: black;
+      cursor: pointer;
+      transition: background-color 0.5s;
+    }
+
+    button:hover {
+      background-color: green;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+<h1>Tính Chu Vi Hình Tròn</h1>
+   <label for="radius">Nhập bán kính (r):</label>
+   <input type="number" id="radius"><br>
+
+   <button onclick="chuViHinhTron()">Calculate</button>
+
+<h2 id="ketQua"></h2>
+<script>
+  function chuViHinhTron() {
+    const r = document.getElementById('radius').value;
+    const p = Math.PI;
+
+    const circum = r * p * 2;
+
+    document.getElementById('ketQua').innerText = "Ket qua: " + circum;
+  }
+</script>
+
+</body>
+</html>
