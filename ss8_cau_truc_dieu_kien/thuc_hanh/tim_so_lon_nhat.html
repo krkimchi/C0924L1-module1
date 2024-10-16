@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="a">a :</label>
+<input type="number" id="a">
+<label for="b">b :</label>
+<input type="number" id="b">
+<label for="c">c :</label>
+<input type="number" id="c">
+<button onclick="findMax()">Tìm số lớn nhất</button>
+<h2 id="result"></h2>
+
+<script>
+  function findMax() {
+    const a = Number(document.getElementById('a').value);
+    const b = Number(document.getElementById('b').value);
+    const c = Number(document.getElementById('c').value);
+
+    if (a > b && a > c) {
+      console.log("max "+ a);
+    } else if (b > c) {
+      console.log("max "+ b);
+    } else {
+      console.log("max "+ c)
+    }
+
+  }
+</script>
+
+</body>
+</html>

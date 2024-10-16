@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 5</title>
+</head>
+<body>
+<h1 style="text-align: center;">Xếp hạng học lực của học sinh</h1>
+
+<label for="testScore">Điểm bài kiểm tra</label>
+<input type="number" id="testScore"><br>
+<label for="midtermScore">Điểm thi giữa kỳ</label>
+<input type="number" id="midtermScore"><br>
+<label for="finalScore">Điểm thi cuối kỳ</label>
+<input type="number" id="finalScore"><br>
+
+<button onclick="average()">Kiểm tra</button>
+
+<h2 id="result"></h2>
+
+<script>
+  function average() {
+    const testScore = Number(document.getElementById("testScore").value);
+    const midtermScore = Number(document.getElementById("midtermScore").value);
+    const finalScore = Number(document.getElementById("finalScore").value);
+    const average = (testScore + midtermScore + finalScore) / 3;
+
+    if (average >= 8) {
+      document.getElementById("result").innerText = "Học lực xuất sắc";
+  } else if (average >=6) {
+      document.getElementById("result").innerText = "Học lực khá";
+    } else if (average >= 5) {
+      document.getElementById("result").innerText = "Học lực trung bình";
+    } else {
+      document.getElementById("result").innerText = "Học lực yếu";
+    }
+  }
+</script>
+
+</body>
+</html>
