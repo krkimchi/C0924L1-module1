@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thuế thu nhập cá nhân</title>
+</head>
+<body>
+<h1 style="text-align: center;">Tính Thuế Thu Nhập Cá Nhân</h1>
+<label for="income">Nhập thu nhập của bạn</label>
+<input type="number" id="income"><br>
+<button onclick="calculateMyTaxes()">Kiểm Tra</button>
+<h2 id="result"></h2>
+<script>
+    function calculateMyTaxes() {
+        const income = document.getElementById("income").value;
+        let taxes;
+
+        if (income <= 5000000) {
+            taxes = income * 0.05;
+        } else if (income <= 10000000) {
+            taxes = income * 0.10 - 250000;
+        } else if (income <= 18000000) {
+            taxes = income * 0.15 - 750000;
+        } else if (income <= 32000000) {
+            taxes = income * 0.20 - 1650000;
+        } else if (income <= 52000000) {
+            taxes = income * 0.25 - 3250000;
+        } else if (income <= 80000000) {
+            taxes = income * 0.30 - 5850000;
+        } else {
+            taxes = income * 0.35 - 9850000;
+        }
+
+        document.getElementById("result").innerText = "Số thuế phải nộp là: " + taxes + " VND";
+
+    }
+</script>
+</body>
+</html>

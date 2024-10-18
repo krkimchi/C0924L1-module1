@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Giá Điện</title>
+</head>
+<body>
+<h1 style="text-align: center;">Tính Giá Điện</h1>
+<label for="usage">Nhập số điện tiêu thụ (kWh):</label>
+<input type="number" id="usage"><br>
+<button onclick="calculate()">Tính Giá</button>
+<h2 id="result"></h2>
+<script>
+    function calculate() {
+        const usage = document.getElementById("usage").value;
+        let bill;
+
+        if (usage <= 50) {
+            bill = usage * 1806;
+        } else if (usage <= 100) {
+            bill = (50 * 1806) + ((usage - 50) * 1866);
+        } else if (usage <= 200) {
+            bill = (50 * 1806) + (50 * 1866) + ((usage - 100) * 2167);
+        } else if (usage <= 300) {
+            bill = (50 * 1806) + (50 * 1866) + (100 * 2167) + ((usage - 200) * 2729);
+        } else if (usage <= 400) {
+            bill = (50 * 1806) + (50 * 1866) + (100 * 2167) + (100 * 2729) + ((usage - 300) * 3050);
+        } else {
+            bill = (50 * 1806) + (50 * 1866) + (100 * 2167) + (100 * 2729) + (100 * 3050) + ((usage - 400) * 3151);
+        }
+        document.getElementById("result").innerText = "Tổng tiền điện là: " + bill + " VND";
+
+    }
+</script>
+</body>
+</html>

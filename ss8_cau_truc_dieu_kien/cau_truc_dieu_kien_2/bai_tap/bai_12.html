@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Lãi Ngân Hàng</title>
+</head>
+<body>
+<h1>Tính Lãi Ngân Hàng</h1>
+<label for="amount">Số tiền gửi (VNĐ):</label>
+<input type="number" id="amount">
+
+<label for="months">Số tháng gửi:</label>
+<input type="number" id="months">
+
+<label for="interest">Lãi suất hàng năm (%):</label>
+<input type="number" id="interest" step="0.01">
+
+<button onclick="calculateLoan()">Tính toán</button>
+
+<h2 id="result"></h2>
+<script>
+    function calculateLoan() {
+        const amount = parseFloat(document.getElementById("amount").value);
+        const months = parseFloat(document.getElementById("months").value);
+        const interestRate = parseFloat(document.getElementById("interest").value);
+
+        const monthlyInterest = interestRate / 100 / 12;
+        const interest = amount * monthlyInterest * months;
+
+        document.getElementById("result").innerText = "Số tiền lãi bạn được nhận: " + interest.toFixed(2) + " VND";
+    }
+</script>
+
+</body>
+</html>
