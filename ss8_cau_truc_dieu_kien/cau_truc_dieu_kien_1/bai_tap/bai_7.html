@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 7</title>
+</head>
+<body>
+<h1 style="text-align: center;">Tính cước điện thoại</h1>
+
+<label for="minutes">Nhập số phút sử dụng</label>
+<input type="number" id="minutes">
+<button onclick="calculate()">Tính cước</button>
+<h2 id="result"></h2>
+<script>
+    function calculate() {
+        const minutes = Number(document.getElementById("minutes").value);
+        let totalCost;
+
+        if (minutes > 0) {
+            totalCost = minutes * 50;
+        } else if (minutes >= 5) {
+            totalCost = minutes * 70;
+        } else {
+            totalCost = minutes * 100;
+        }
+        document.getElementById("result").innerText = "Cước điện thoại: " + totalCost + " VND";
+    }
+</script>
+</body>
+</html>

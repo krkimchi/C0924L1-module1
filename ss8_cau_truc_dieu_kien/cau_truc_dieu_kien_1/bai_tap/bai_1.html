@@ -16,16 +16,16 @@
 <h2 id="result"></h2>
 
 <script>
-  function checkDivision() {
-    const a = Number(document.getElementById("a").value);
-    const b = Number(document.getElementById("b").value);
+    function checkDivision() {
+        const a = Number(document.getElementById("a").value);
+        const b = Number(document.getElementById("b").value);
 
-    if (b === 0) {
-      document.getElementById("result").innerText = "b không thể bằng 0";
-    } else {
-      document.getElementById("result").innerText = (a % b === 0) ? "a chia hết cho b" : "a không chia hết cho b";
+        if (b === 0) {
+            document.getElementById("result").innerText = "b không thể bằng 0";
+        } else {
+            document.getElementById("result").innerText = (a % b === 0) ? "a chia hết cho b" : "a không chia hết cho b";
+        }
     }
-  }
 
 </script>
 </body>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diện tích tam giác vuông</title>
+</head>
+<body>
+<h1 style="text-align: center;">Tính Diện Tích Tam Giác Vuông</h1>
+<label for ="a">Cạnh a</label>
+<input type="number" id="a"><br>
+<label for ="b">Cạnh b</label>
+<input type="number" id="b"><br>
+<button onclick="calculateArea()">Kết quả</button>
+<h2 id="result"></h2>
+<script>
+    function calculateArea() {
+        const a = parseFloat(document.getElementById("a").value);
+        const b = parseFloat(document.getElementById("b").value);
+        const area = 0.5 * a * b;
+        document.getElementById("result").innerHTML = "Diện tích tam giác vuông là "+ area;
+    }
+</script>
+
+</body>
+</html>
