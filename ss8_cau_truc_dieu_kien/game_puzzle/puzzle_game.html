@@ -74,10 +74,10 @@
                 e.preventDefault();
             });
             tile.addEventListener("drop", function() {
-                emptyTile = this.querySelector('img');
+                emptyTile = this;
             });
             tile.addEventListener("dragend", function() {
-                if (emptyTile && emptyTile.src.includes("3.png")) {
+                if (emptyTile && this) {
                     const currCoords = currentTile.id.split("-");
                     const row = parseInt(currCoords[0]);
                     const col = parseInt(currCoords[1]);
