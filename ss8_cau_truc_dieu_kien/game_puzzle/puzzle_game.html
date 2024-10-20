@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #0c67ae;
+        }
+
+        #board {
+            width: 360px;
+            height: 360px;
+            background-color: lightblue;
+            border: 5px solid #0c67ae;
+            margin: 0 auto;
+        }
+
+        #board td {
+            width: 118px;
+            height: 118px;
+            border: 1px solid #0c67ae;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        #board img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<table id="board">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<h1>Turns: <span id="turns">0</span></h1>
+<button onclick="resetGame()">Reset Game</button>
+
+<script>
+    const cols = 3;
+    let currentTile;
+    let emptyTile;
+    let turns = 0;
+    let imgOrder = ["4", "2", "8", "5", "1", "6", "7", "9", "3"];
+
+    window.onload = function() {
+        const cells = document.querySelectorAll("#board td");
+        for (let i = 0; i < cells.length; i++) {
+            const tile = document.createElement("img");
+            tile.id = Math.floor(i / cols) + "-" + (i % cols);
+            tile.src = imgOrder[i] + ".png";
+
+            tile.addEventListener("dragstart", function() {
+                currentTile = this;
+            });
+            tile.addEventListener("dragover", function(e) {
+                e.preventDefault();
+            });
+            tile.addEventListener("drop", function() {
+                emptyTile = this.querySelector('img');
+            });
+            tile.addEventListener("dragend", function() {
+                if (emptyTile && emptyTile.src.includes("3.png")) {
+                    const currCoords = currentTile.id.split("-");
+                    const row = parseInt(currCoords[0]);
+                    const col = parseInt(currCoords[1]);
+                    const emptyCoords = emptyTile.id.split("-");
+                    const emptyRow = parseInt(emptyCoords[0]);
+                    const emptyCol = parseInt(emptyCoords[1]);
+
+                    if ((row === emptyRow && Math.abs(col - emptyCol) === 1) ||
+                        (col === emptyCol && Math.abs(row - emptyRow) === 1)) {
+                        const currentImgSrc = currentTile.src;
+                        currentTile.src = emptyTile.src;
+                        emptyTile.src = currentImgSrc;
+                        turns++;
+                        document.getElementById("turns").innerText = turns;
+                    }
+                }
+            });
+
+            cells[i].appendChild(tile);
+        }
+        emptyTile = cells[imgOrder.indexOf("3")].firstChild;
+    }
+
+    function resetGame() {
+        turns = 0;
+        document.getElementById("turns").innerText = turns;
+        imgOrder = ["4", "2", "8", "5", "1", "6", "7", "9", "3"];
+
+
+        for (let i = imgOrder.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = imgOrder[i];
+            imgOrder[i] = imgOrder[j];
+            imgOrder[j] = temp;
+        }
+
+        const cells = document.querySelectorAll("#board td");
+        for (let i = 0; i < cells.length; i++) {
+            const tile = cells[i].querySelector('img');
+            tile.src = imgOrder[i] + ".png";
+        }
+    }
+</script>
+</body>
+</html>
