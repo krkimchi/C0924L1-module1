@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 8</title>
+</head>
+<body>
+<h1>Game Đoán Số</h1>
+<button id="playButton">Start</button>
+<script>
+    document.getElementById('playButton').onclick = function () {
+        let min = parseInt(prompt("Nhập số tối thiểu:"));
+        let max = parseInt(prompt("Nhập số tối đa:"));
+
+        let randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+        let attempts = 0;
+
+        while (attempts < 3) {
+            let guess = parseInt(prompt("Bạn đoán số nào? (Lần thử " + (attempts + 1) + "):"));
+            if (guess === randomNumber) {
+                alert("Chúc mừng! Bạn đã đoán đúng số: " + randomNumber);
+                return;
+            } else if (guess < randomNumber) {
+                alert("Số bạn đoán thấp hơn. Hãy thử lại.");
+            } else if (guess > randomNumber) {
+                alert("Số bạn đoán lớn hơn. Hãy thử lại.");
+            }
+
+            attempts++;
+        }
+        alert("Bạn đã hết lượt chơi. Số đúng là: " + randomNumber);
+    }
+
+</script>
+</body>
+</html>

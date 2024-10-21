@@ -59,6 +59,7 @@
     let emptyTile;
     let turns = 0;
     let imgOrder = ["4", "2", "8", "5", "1", "6", "7", "9", "3"];
+    const correctOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
     window.onload = function() {
         const cells = document.querySelectorAll("#board td");
@@ -92,6 +93,8 @@
                         emptyTile.src = currentImgSrc;
                         turns++;
                         document.getElementById("turns").innerText = turns;
+
+                        checkWin();
                     }
                 }
             });
@@ -99,6 +102,19 @@
             cells[i].appendChild(tile);
         }
         emptyTile = cells[imgOrder.indexOf("3")].firstChild;
+    }
+
+    function checkWin() {
+        const cells = document.querySelectorAll("#board td img");
+        let currentOrder = [];
+
+        cells.forEach(img => {
+            let imgSrc = img.src.split('/').pop().replace(".png", "");
+            currentOrder.push(imgSrc);
+        });
+        if (JSON.stringify(currentOrder) === JSON.stringify(correctOrder)) {
+            alert("Bạn đã hoàn thành trò chơi");
+        }
     }
 
     function resetGame() {

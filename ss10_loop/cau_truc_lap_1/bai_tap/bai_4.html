@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+<h2>Số đầu tiên trong dãy Fibonacci chia hết cho 5</h2>
+<script>
+    let fib = [0, 1];
+    let chia5;
+
+    for (let i = 2; ; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+
+        if (fib[i] % 5 === 0) {
+            chia5 = fib[i];
+            break;
+        }
+    }
+    document.write("Số Fibonacci đầu tiên chia hết cho 5 là: " + chia5);
+</script>
+</body>
+</html>
