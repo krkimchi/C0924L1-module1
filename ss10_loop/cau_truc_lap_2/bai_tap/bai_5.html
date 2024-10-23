@@ -5,6 +5,22 @@
     <title>Bài 5</title>
 </head>
 <body>
+<h1 style="text-align: center;">Tính lãi xuất ngân hàng</h1>
+<script>
+    let amount = parseFloat(prompt("Nhập số tiền ban đầu: "));
+    let monthlyRate = parseFloat(prompt("Nhập lãi suất hàng tháng:"));
+    let months = parseInt(prompt("Nhập số tháng cho vay: "));
 
+    function calculate() {
+        let totalAmount = amount;
+        for (let i = 1; i <= months; i++) {
+            totalAmount += totalAmount * monthlyRate;
+        }
+        return totalAmount;
+    }
+
+    let finalAmount = calculate();
+    document.write("Số tiền sau " + months + " tháng là: " + finalAmount + " VND");
+</script>
 </body>
 </html>
