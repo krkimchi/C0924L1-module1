@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 1</title>
+</head>
+<body>
+<script>
+  let n = parseInt(prompt("Nhập số lượng số Fibonacci muốn in:"));
+  let a = 0, b = 1;
+
+  document.write("Dãy Fibonacci: ");
+  for(let i = 0; i < n; i++){
+    document.write(a + " ");
+    let next = a + b;
+    a = b;
+    b = next;
+  }
+
+</script>
+
+</body>
+</html>

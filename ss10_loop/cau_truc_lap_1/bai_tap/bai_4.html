@@ -7,18 +7,19 @@
 <body>
 <h2>Số đầu tiên trong dãy Fibonacci chia hết cho 5</h2>
 <script>
-    let fib = [0, 1];
-    let chia5;
+    let a = 0, b = 1;
+    let fib;
 
-    for (let i = 2; ; i++) {
-        fib[i] = fib[i - 1] + fib[i - 2];
-
-        if (fib[i] % 5 === 0) {
-            chia5 = fib[i];
+    while (true) {
+        fib = a;
+        if (fib % 5 === 0) {
+            document.write("Số Fibonacci đầu tiên chia hết cho 5 là: " + fib);
             break;
         }
+        let temp = a + b;
+        a = b;
+        b = temp;
     }
-    document.write("Số Fibonacci đầu tiên chia hết cho 5 là: " + chia5);
 </script>
 </body>
 </html>

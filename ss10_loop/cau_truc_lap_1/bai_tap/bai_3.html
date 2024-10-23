@@ -7,15 +7,16 @@
 <body>
 <h2>Dãy Fibonacci</h2>
 <script>
-    let fib = [0, 1];
-    document.write(fib[0] + "<br>");
-    document.write(fib[1] + "<br>");
+    let a = 0, b = 1;
+    let fib = [a];
 
-    for (let i = 2; i < 20; i++) {
-        fib[i] = fib[i - 1] + fib[i - 2];
-        document.write(fib[i] + "<br>");
+    for (let i = 1; i < 20; i++) {
+        fib[i] = b;
+        let temp = a + b;
+        a = b;
+        b = temp;
     }
-
+    document.write("20 số đầu tiên trong dãy Fibonacci là: " + fib);
 </script>
 
 </body>

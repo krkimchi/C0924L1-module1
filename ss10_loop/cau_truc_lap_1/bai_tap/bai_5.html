@@ -6,16 +6,17 @@
 </head>
 <body>
 <h2>Tổng của 20 số đầu tiên trong dãy Fibonacci</h2>
+<p id="result"></p>
 <script>
-    let fib = [0, 1];
-    let sum = fib[0] + fib[1];
-
-    for (let i = 2; i <=20 ; i++) {
-        fib[i] = fib[i - 1] + fib[i - 2];
-        sum += fib[i];
+    let a = 0, b = 1, sum = 0;
+    for (let i = 1; i <= 20; i++) {
+        sum += a;
+        let next = a + b;
+        a = b;
+        b = next;
     }
-    document.write("Tổng của 20 số đầu tiên trong dãy Fibonacci là: " + sum);
 
+    document.getElementById('result').textContent = 'Tổng: ' + sum;
 </script>
 </body>
 </html>
